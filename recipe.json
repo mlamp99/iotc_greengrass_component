@@ -1,0 +1,63 @@
+{
+  "RecipeFormatVersion": "2020-01-25",
+  "ComponentName": "com.example.Publisher26",
+  "ComponentVersion": "1.1.1",
+  "ComponentDescription": "IoTConnect with AWS CRT and IoT SDK Wheels",
+  "ComponentPublisher": "Softweb",
+  "ComponentConfiguration": {
+    "DefaultConfiguration": {
+      "message": "hi",
+      "accessControl": {
+        "aws.greengrass.ipc.mqttproxy": {
+          "com.iotconnect.sdk2:mqttproxy:1": {
+            "policyDescription": "Allows access to pub/sub to mypi/mqtt.",
+            "operations": [
+              "aws.greengrass#SubscribeToIoTCore",
+              "aws.greengrass#PublishToIoTCore"
+            ],
+            "resources": ["*"]
+          }
+        },
+        "aws.greengrass.ipc.pubsub": {
+          "com.iotconnect.sdk2:pubsub:1": {
+            "policyDescription": "Allows access to publish to mypi/button.",
+            "operations": [
+              "aws.greengrass#PublishToTopic",
+              "aws.greengrass#SubscribeToTopic"
+            ],
+            "resources": ["*"]
+          }
+        }
+      }
+    }
+  },
+  "Manifests": [
+    {
+      "Platform": { "os": "*" },
+      "Lifecycle": {
+        "Install": {
+          "RequiresPrivilege": true,
+          "script": "python3 -m pip install --user https://github.com/mlamp99/iotc_greengrass_component/raw/main/awscrt-1.0.0.dev0-cp311-abi3-manylinux_2_28_armv7l.manylinux_2_31_armv7l.whl https://github.com/mlamp99/iotc_greengrass_component/raw/main/awsiotsdk-1.22.2-py3-none-any.whl"
+        },
+        "setenv": {
+          "CPID": "97FF86E8728645E9B89F7B07977E4B15",
+          "ENV": "poc",
+          "URL": "https://awsdiscovery.iotconnect.io"
+        },
+        "Run": {
+          "RequiresPrivilege": true,
+          "script": "python3 -u {artifacts:path}/iotconnect_sdk.py"
+        }
+      },
+      "Artifacts": [
+        {
+          "Uri": "s3://root-260030673750/584af730-2854-4a77-8f3b-ca1696401e08/gg-artifacts/iotconnect_sdk_v22mcl.py",
+          "Unarchive": "NONE",
+          "Permission": { "Read": "OWNER", "Execute": "NONE" }
+        }
+      ]
+    }
+  ]
+}
+
+
