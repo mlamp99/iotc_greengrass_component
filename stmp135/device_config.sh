@@ -9,7 +9,7 @@ INSTALL_DIR="/home/root"
 TMP_DIR="/usr/local/tmp"
 
 # Step 1: Update and install essential dependencies
-apt-get update && apt-get install -y curl wget unzip libzip-dev uriparser-dev python3-pip build-essential cmake pkg-config git
+apt-get update && apt-get install -y curl wget unzip libzip-dev uriparser python3-pip build-essential cmake pkg-config git
 
 # Step 2: Clone and build Greengrass Lite from patched source
 git clone https://github.com/aws-greengrass/aws-greengrass-lite.git "$INSTALL_DIR/aws-greengrass-lite"
