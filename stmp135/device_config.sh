@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Variables
+#  Variables
 AWS_ROOT_CA="https://www.amazontrust.com/repository/AmazonRootCA1.pem"
 AWSCRT_WHL="https://github.com/mlamp99/iotc_greengrass_component/raw/main/stmp135/awscrt-0.24.1-cp311-abi3-manylinux_2_28_armv7l.manylinux_2_31_armv7l.whl"
 IOTSDK_WHL="https://github.com/mlamp99/iotc_greengrass_component/raw/main/stmp135/awsiotsdk-1.22.2-py3-none-any.whl"
